@@ -1,0 +1,51 @@
+
+
+
+    void transpose(int** m,int n)
+{
+    int t[n][n];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            t[i][j]=m[j][i];
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            m[i][j]=t[i][j];
+        }
+    }
+}
+
+
+void reverse(int**m,int n)
+{
+    int t[n][n];
+    for(int i=0;i<n;i++)
+    {
+        int k=n;
+        for(int j=0;j<n;j++)
+        {
+            t[i][j]=m[i][k-1];
+            k--;
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            m[i][j]=t[i][j];
+        }
+    }
+}
+
+void rotate(int** matrix, int matrixSize, int* matrixColSize){
+
+    transpose(matrix,matrixSize);
+    reverse(matrix,matrixSize);
+    
+
+}
