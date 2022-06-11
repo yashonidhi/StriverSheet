@@ -1,0 +1,13 @@
+int findDuplicate(int* nums, int numsSize) {
+int turtle=nums[0],rabbit=nums[0];
+do{
+turtle=nums[turtle];
+rabbit=nums[nums[rabbit]];
+}while(turtle!=rabbit);
+int p1=nums[0],p2=turtle;
+while(p1!=p2){
+p1=nums[p1];
+p2=nums[p2];
+}
+return p1;
+}
