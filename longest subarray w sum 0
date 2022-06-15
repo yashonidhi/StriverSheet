@@ -1,0 +1,23 @@
+ 
+   for(i=0;i<5;i++)
+   {    
+       int sum=0;
+       for(j=i;j<5;j++)
+       {
+           sum=sum+a[j];
+           
+           if(sum==0)
+           {
+               l=j-i+1;
+               
+               if(l>max)
+               {
+                   max=l;
+               }
+           }
+           
+           
+       }
+   }
+   
+   return max;
