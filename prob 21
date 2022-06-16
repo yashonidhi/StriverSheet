@@ -1,0 +1,41 @@
+struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2){
+	//  There's no need to merge if one of the list is empty
+    if (!list1) return list2;
+    if (!list2) return list1;
+    
+	//  a dummy node to represent the head
+    struct ListNode *dummy = malloc(sizeof(struct ListNode));
+	//  a node to link through two lists
+    struct ListNode *tmp = dummy;
+	
+    //  select the smaller value to link with if both lists are not empty
+    while (list1 && list2) {
+		//  list1->val is smaller than list2->val
+        if (list1->val < list2->val) {
+            tmp->next = list1;
+            list1 = list1->next;
+        } else {
+			//  list2->val is smaller than or equal to list1->val
+            tmp->next = list2;
+            list2 = list2->next;
+        }
+		//  now onto the next one
+        tmp = tmp->next;
+    }
+	
+    //  link the remaining list (the list that's not empty)
+    if (list1)
+        tmp->next = list1;  //  if list1 is not empty, then list1 is the next node
+    else
+        tmp->next = list2;  //  if list2 is not empty, then list1 is the next node
+	
+	//  or you can written above if-else statement as
+    //tmp->next = list1 ? list1 : list2;  // this line is equal to the if-else statement part above
+	
+	//  because dummy node need to be freed, so we save it to tmp for return value
+    tmp = dummy->next;  // this is the first node we linked to
+	//  free dummy node
+    free(dummy);
+    
+    return tmp;  //  return the first node we linked to, which is the head of the list
+}
