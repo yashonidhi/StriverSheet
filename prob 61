@@ -1,0 +1,21 @@
+struct ListNode* rotateRight(struct ListNode* head, int k){
+    if (!head)  return head;
+    
+    struct ListNode *temp = head;
+    size_t total = 0;
+    
+    while (temp->next)    {
+        ++total;    // count indices
+        temp = temp->next; 
+    }
+    
+    temp->next = head;
+    size_t step = total - (k % (total+1));  
+    while (step--)   head = head->next;
+    
+    temp = head;
+    head = head->next;
+    temp->next = NULL;
+    
+    return head;
+}
